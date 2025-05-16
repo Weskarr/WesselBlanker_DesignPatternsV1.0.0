@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43e72f2cef6e45468e525ee685eceb5, type: 3}
+  m_Name: AttributeBlackboard
+  m_EditorClassIdentifier: 
+  availableAttributes:
+  - {fileID: 11400000, guid: 597f30d4433fdc644ac1e50698a2b51e, type: 2}
+  - {fileID: 11400000, guid: 991fb0afcfb7cc54f8ef066d6358c107, type: 2}
+  - {fileID: 11400000, guid: f72bb9d8043fc99419d838a568738ebf, type: 2}
+  - {fileID: 11400000, guid: 26a215e626252a44f94c0c2facc53bf9, type: 2}
+  - {fileID: 11400000, guid: 0e9f1a6dc8632e443a4b38783515a591, type: 2}
