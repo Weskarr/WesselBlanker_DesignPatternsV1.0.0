@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cb34058b33614304191a0bca488f5a63, type: 3}
-  m_Name: GeneDelta
+  m_Name: GeneCharlie
   m_EditorClassIdentifier: 
-  geneSprite: {fileID: -798696430, guid: 253eea999f10b6a468c046df3090e44e, type: 3}
+  geneSprite: {fileID: 1106561711, guid: 253eea999f10b6a468c046df3090e44e, type: 3}
   geneEffectors:
-  - geneAttribute: 3
-    geneEffectAmount: 4
+  - geneAttribute: 4
+    geneEffectAmount: 3
   - geneAttribute: 2
     geneEffectAmount: 2
-  - geneAttribute: 5
+  - geneAttribute: 1
     geneEffectAmount: 1

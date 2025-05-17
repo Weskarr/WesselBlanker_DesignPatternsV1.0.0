@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class GeneSlot : MonoBehaviour, ISlot
 {
     public GeneBlackboard geneBlackboard;
-    public GeneManager geneManager;
     public GeneData geneData;
     public Image geneIconVisual;
 
@@ -13,7 +12,7 @@ public class GeneSlot : MonoBehaviour, ISlot
 
     public void UpdateSlot()
     {
-
+        geneIconVisual.sprite = geneData.geneSprite;
     }
 
     public void NextGene()
@@ -24,6 +23,21 @@ public class GeneSlot : MonoBehaviour, ISlot
     public void PrevGene()
     {
         ChangeGeneData(false);
+    }
+
+    public void RandomizeGene()
+    {
+        int maxIndex = geneBlackboard.availableGenes.Count - 1;
+        int randomIndex = Random.Range(0, maxIndex);
+
+        if (geneData != geneBlackboard.availableGenes[randomIndex])
+        {
+            geneData = geneBlackboard.availableGenes[randomIndex];
+
+            UpdateSlot();
+
+            OnSlotChanged?.Invoke(this);
+        }
     }
 
     public void ChangeGeneData(bool forward)
@@ -47,7 +61,7 @@ public class GeneSlot : MonoBehaviour, ISlot
         else if (newIndex < 0)
             geneData = geneBlackboard.availableGenes[maxIndex];
 
-        geneIconVisual.sprite = geneData.geneSprite;
+        UpdateSlot();
 
         OnSlotChanged?.Invoke(this);
     }

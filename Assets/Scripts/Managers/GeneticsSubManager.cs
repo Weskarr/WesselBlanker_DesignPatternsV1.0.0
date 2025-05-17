@@ -1,11 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class GeneticsSubManager : MonoBehaviour, ISubManager, IPlantAttributesHolder
 {
@@ -19,6 +14,7 @@ public class GeneticsSubManager : MonoBehaviour, ISubManager, IPlantAttributesHo
         foreach (var slot in slots)
         {
             slot.OnSlotChanged += HandleGeneSlotChanged;
+            slot.RandomizeGene();
         }
     }
 
@@ -27,6 +23,7 @@ public class GeneticsSubManager : MonoBehaviour, ISubManager, IPlantAttributesHo
         foreach (var slot in slots)
         {
             slot.OnSlotChanged -= HandleGeneSlotChanged;
+            slot.RandomizeGene();
         }
     }
 

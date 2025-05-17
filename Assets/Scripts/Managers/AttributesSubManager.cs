@@ -9,9 +9,16 @@ public class AttributesSubManager : MonoBehaviour, ISubManager, IPlantAttributes
     private int GetAttribute(PlantAcronymEnum type)
     {
         AttributeSlot slot = slots.FirstOrDefault(s => s.AttributeData.attributeName == type);
+
         if (slot != null)
+        {
             return slot.attributeCurrentLevel;
-        return 0;
+        }
+        else
+        {
+            Debug.Log("Missing Attribute Slot!");
+            return 0;
+        }
     }
 
     private void SetAttribute(PlantAcronymEnum type, int value)
@@ -21,6 +28,10 @@ public class AttributesSubManager : MonoBehaviour, ISubManager, IPlantAttributes
         {
             slot.attributeCurrentLevel = value;
             slot.UpdateSlot();
+        }
+        else
+        {
+            Debug.Log("Missing Attribute Slot!");
         }
     }
 
