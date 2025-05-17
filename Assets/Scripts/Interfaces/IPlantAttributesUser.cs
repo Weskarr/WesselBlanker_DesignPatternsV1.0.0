@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public interface IPlantAttributesHolder
+public interface IPlantAttributesUser
 {
     public int PowerLevel { get; set; }
     public int LifespanLevel { get; set; }

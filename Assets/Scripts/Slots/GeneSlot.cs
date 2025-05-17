@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class GeneSlot : MonoBehaviour, ISlot
 {
-    public GeneBlackboard geneBlackboard;
+    [SerializeField] private GenesBlackboard geneBlackboard;
+    [SerializeField] private Image geneIconVisual;
     public GeneData geneData;
-    public Image geneIconVisual;
 
     public event System.Action<GeneSlot> OnSlotChanged;
 
@@ -40,7 +40,7 @@ public class GeneSlot : MonoBehaviour, ISlot
         }
     }
 
-    public void ChangeGeneData(bool forward)
+    private void ChangeGeneData(bool isForward)
     {
         int index = geneBlackboard.availableGenes.IndexOf(geneData);
 
@@ -50,7 +50,7 @@ public class GeneSlot : MonoBehaviour, ISlot
             return;
         }
 
-        int direction = forward ? 1 : -1;
+        int direction = isForward ? 1 : -1;
         int newIndex = index + direction;
         int maxIndex = geneBlackboard.availableGenes.Count - 1;
 

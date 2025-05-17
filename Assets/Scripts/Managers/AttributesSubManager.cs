@@ -2,13 +2,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class AttributesSubManager : MonoBehaviour, ISubManager, IPlantAttributesHolder
+public class AttributesSubManager : MonoBehaviour, ISubManager, IPlantAttributesUser
 {
-    public List<AttributeSlot> slots = new List<AttributeSlot>();
+    [SerializeField] private List<AttributeSlot> attributeSlots = new List<AttributeSlot>();
 
     private int GetAttribute(PlantAcronymEnum type)
     {
-        AttributeSlot slot = slots.FirstOrDefault(s => s.AttributeData.attributeName == type);
+        AttributeSlot slot = attributeSlots.FirstOrDefault(s => s.attributeData.attributeName == type);
 
         if (slot != null)
         {
@@ -23,7 +23,7 @@ public class AttributesSubManager : MonoBehaviour, ISubManager, IPlantAttributes
 
     private void SetAttribute(PlantAcronymEnum type, int value)
     {
-        AttributeSlot slot = slots.FirstOrDefault(s => s.AttributeData.attributeName == type);
+        AttributeSlot slot = attributeSlots.FirstOrDefault(s => s.attributeData.attributeName == type);
         if (slot != null)
         {
             slot.attributeCurrentLevel = value;

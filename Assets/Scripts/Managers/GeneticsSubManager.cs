@@ -2,29 +2,41 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GeneticsSubManager : MonoBehaviour, ISubManager, IPlantAttributesHolder
+public class GeneticsSubManager : MonoBehaviour, ISubManager, IPlantAttributesUser
 {
-    public List<GeneSlot> slots = new List<GeneSlot>();
-    public Dictionary<PlantAcronymEnum, int> attributesPassive = new();
+    [SerializeField] private List<GeneSlot> geneSlots = new List<GeneSlot>();
+    private Dictionary<PlantAcronymEnum, int> attributesPassive = new();
 
     public event System.Action OnAttributesPassiveChange;
 
     public void SubscribeSlots()
     {
-        foreach (var slot in slots)
+        foreach (var slot in geneSlots)
         {
             slot.OnSlotChanged += HandleGeneSlotChanged;
-            slot.RandomizeGene();
         }
     }
 
     public void UnsubscribeSlots()
     {
-        foreach (var slot in slots)
+        foreach (var slot in geneSlots)
         {
             slot.OnSlotChanged -= HandleGeneSlotChanged;
+        }
+    }
+
+    public void RandomizeSlots()
+    {
+        foreach (var slot in geneSlots)
+        {
             slot.RandomizeGene();
         }
+    }
+
+    public void RecalculateAttributes()
+    {
+        ZeroAttributes();
+        CalculateAttributes();
     }
 
     private void HandleGeneSlotChanged(GeneSlot slot)
@@ -34,13 +46,7 @@ public class GeneticsSubManager : MonoBehaviour, ISubManager, IPlantAttributesHo
         OnAttributesPassiveChange?.Invoke();
     }
 
-    public void RecalculateAttributes()
-    {
-        ZeroAttributes();
-        CalculateAttributes();
-    }
-
-    public void ZeroAttributes()
+    private void ZeroAttributes()
     {
         foreach (PlantAcronymEnum type in Enum.GetValues(typeof(PlantAcronymEnum)))
         {
@@ -49,9 +55,9 @@ public class GeneticsSubManager : MonoBehaviour, ISubManager, IPlantAttributesHo
         }
     }
 
-    public void CalculateAttributes()
+    private void CalculateAttributes()
     {
-        foreach (var slot in slots)
+        foreach (var slot in geneSlots)
         {
             foreach (var effector in slot.geneData.geneEffectors)
             {

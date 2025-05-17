@@ -3,23 +3,24 @@ using UnityEngine;
 
 public class PlantPanelManager : MonoBehaviour, IManager
 {
-    public GeneticsSubManager geneticsSubManager;
-    public AttributesSubManager attributesSubManager;
+    [SerializeField] private GeneticsSubManager geneticsSubManager;
+    [SerializeField] private AttributesSubManager attributesSubManager;
 
     private void Start()
     {
         SubscribeGeneticsSubManager();
+        geneticsSubManager.RandomizeSlots();
         geneticsSubManager.SubscribeSlots();
         geneticsSubManager.RecalculateAttributes();
         RebindSubManagers();
     }
 
-    public void SubscribeGeneticsSubManager()
+    private void SubscribeGeneticsSubManager()
     {
         geneticsSubManager.OnAttributesPassiveChange += HandleAttributesPassiveChanged;
     }
 
-    public void UnsubscribeGeneticsSubManager()
+    private void UnsubscribeGeneticsSubManager()
     {
         geneticsSubManager.OnAttributesPassiveChange -= HandleAttributesPassiveChanged;
     }
@@ -30,7 +31,7 @@ public class PlantPanelManager : MonoBehaviour, IManager
         RebindSubManagers();
     }
 
-    private void RebindSubManagers()
+    public void RebindSubManagers()
     {
         attributesSubManager.PowerLevel = geneticsSubManager.PowerLevel;
         attributesSubManager.LifespanLevel = geneticsSubManager.LifespanLevel;

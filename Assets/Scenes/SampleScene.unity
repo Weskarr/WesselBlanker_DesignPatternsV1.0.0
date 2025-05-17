@@ -519,7 +519,7 @@ PrefabInstance:
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneData
       value: 
-      objectReference: {fileID: 11400000, guid: e980189fa85a74646b78f1a8b3d85aa8, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneBlackboard
       value: 
@@ -738,7 +738,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 99.99999, y: -2}
+  m_AnchoredPosition: {x: 100, y: -2}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!1001 &389595695
@@ -835,6 +835,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
       propertyPath: AttributeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 597f30d4433fdc644ac1e50698a2b51e, type: 2}
+    - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
+      propertyPath: attributeData
       value: 
       objectReference: {fileID: 11400000, guid: 597f30d4433fdc644ac1e50698a2b51e, type: 2}
     - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
@@ -1002,7 +1006,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 100, y: -49.999996}
-  m_SizeDelta: {x: -48, y: -88}
+  m_SizeDelta: {x: -80, y: -88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &417634161
 MonoBehaviour:
@@ -1772,7 +1776,7 @@ PrefabInstance:
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneData
       value: 
-      objectReference: {fileID: 11400000, guid: e980189fa85a74646b78f1a8b3d85aa8, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneBlackboard
       value: 
@@ -2052,7 +2056,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 49.999996, y: -49.999996}
-  m_SizeDelta: {x: 2, y: -85}
+  m_SizeDelta: {x: -44.999996, y: -85}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &994426471
 MonoBehaviour:
@@ -2252,7 +2256,7 @@ PrefabInstance:
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneData
       value: 
-      objectReference: {fileID: 11400000, guid: e980189fa85a74646b78f1a8b3d85aa8, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneBlackboard
       value: 
@@ -2361,7 +2365,7 @@ PrefabInstance:
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneData
       value: 
-      objectReference: {fileID: 11400000, guid: e980189fa85a74646b78f1a8b3d85aa8, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneBlackboard
       value: 
@@ -2578,7 +2582,7 @@ PrefabInstance:
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneData
       value: 
-      objectReference: {fileID: 11400000, guid: e980189fa85a74646b78f1a8b3d85aa8, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneBlackboard
       value: 
@@ -2790,7 +2794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df00ec31ca0c5084f9b4abe16684bb89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
+  attributeSlots:
   - {fileID: 3889314288800622897}
   - {fileID: 253759616}
   - {fileID: 2143432952}
@@ -2847,7 +2851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f397e0a8a87b5d046962e600967b3b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slots:
+  geneSlots:
   - {fileID: 63494651}
   - {fileID: 1552229938}
   - {fileID: 1413590494}
@@ -2948,6 +2952,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
       propertyPath: AttributeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0e9f1a6dc8632e443a4b38783515a591, type: 2}
+    - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
+      propertyPath: attributeData
       value: 
       objectReference: {fileID: 11400000, guid: 0e9f1a6dc8632e443a4b38783515a591, type: 2}
     - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
@@ -3575,6 +3583,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: f72bb9d8043fc99419d838a568738ebf, type: 2}
     - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
+      propertyPath: attributeData
+      value: 
+      objectReference: {fileID: 11400000, guid: f72bb9d8043fc99419d838a568738ebf, type: 2}
+    - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
       propertyPath: geneStatAttribute
       value: 4
       objectReference: {fileID: 0}
@@ -3634,7 +3646,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 103, y: -49.999996}
-  m_SizeDelta: {x: -51, y: -88}
+  m_SizeDelta: {x: -93, y: -88}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1890554913
 MonoBehaviour:
@@ -4100,6 +4112,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 991fb0afcfb7cc54f8ef066d6358c107, type: 2}
     - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
+      propertyPath: attributeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 991fb0afcfb7cc54f8ef066d6358c107, type: 2}
+    - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
       propertyPath: geneStatAttribute
       value: 2
       objectReference: {fileID: 0}
@@ -4314,7 +4330,7 @@ PrefabInstance:
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneData
       value: 
-      objectReference: {fileID: 11400000, guid: e980189fa85a74646b78f1a8b3d85aa8, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 8049610275169794180, guid: 032ca1f8eebde6141a4307df4b2c36ea, type: 3}
       propertyPath: geneBlackboard
       value: 
@@ -4416,6 +4432,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5928687985439776587, guid: cf06f0cf94b3e854d8e21d0ed0c988ab, type: 3}
+      propertyPath: attributeData
+      value: 
+      objectReference: {fileID: 11400000, guid: 26a215e626252a44f94c0c2facc53bf9, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
