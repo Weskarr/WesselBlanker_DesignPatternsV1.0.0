@@ -1,7 +1,7 @@
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
-public class PlantPanelManager : MonoBehaviour, IManager
+public class PlantPanelManager : MonoBehaviour, IManagerOld
 {
     [SerializeField] private GeneticsSubManager geneticsSubManager;
     [SerializeField] private AttributesSubManager attributesSubManager;
