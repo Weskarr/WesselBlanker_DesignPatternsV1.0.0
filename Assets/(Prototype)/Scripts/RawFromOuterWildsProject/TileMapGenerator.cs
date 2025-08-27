@@ -16,12 +16,13 @@ namespace TileSystem
         public void NewTileMap(float tileSize, Vector2Int tileMapSize)
         {
             // Optional: Disable all Children of the TileMapsParent.
-            foreach(Transform child in _tileMapsParent.transform)
-                child.gameObject.SetActive(false);
+            foreach (Transform child in _tileMapsParent.transform)
+                GameObject.Destroy(child.gameObject);
 
             // Step 0: New Local Variables.
             TileMap newTileMap;
             Dictionary<Material, List<Matrix4x4>> newBatchedMatrices;
+            Dictionary<Material, List<Matrix4x4[]>> newBatchedMatrixChunks;
             Dictionary<Vector2Int, TileData> newTileDictionary;
 
             // Step 1: Create new Object with the TileMap Component.
@@ -38,18 +39,24 @@ namespace TileSystem
 
             // Step 5: Bake Tile Instances.
             newBatchedMatrices = BakeTileInstances(newTileDictionary, newBatchedMatrices, tileSize);
+            newBatchedMatrixChunks = SplitIntoChunks(newBatchedMatrices);
 
             // Step 6: Parent the new TileMap.
             newTileMap.transform.parent = _tileMapsParent.transform;
 
             // Step 7: Assign Local Variables to the new TileMap.
             newTileMap.BatchedMatrices = newBatchedMatrices;
+            newTileMap.BatchedMatrixChunks = newBatchedMatrixChunks;
             newTileMap.TileDictionary = newTileDictionary;
-            Debug.Log($"Pre-BatchedMatrices Count: {newTileMap.BatchedMatrices.Count}");
+            newTileMap.TileSize = tileSize;
+            //Debug.Log($"Pre-BatchedMatrices Count: {newTileMap.BatchedMatrices.Count}");
             Debug.Log($"Pre-TileDictionary Count: {newTileMap.TileDictionary.Count}");
 
             // Step 8: Assign Rendering Variables to the new TileMap.
             newTileMap.TileMesh = _tileMesh;
+
+            // Step 9: Debug Info?
+            newTileMap.DebugChunkInfo();
         }
 
         private TileMap CreateTileMapObject()
@@ -85,7 +92,7 @@ namespace TileSystem
 
                     TileData newTile = BuildGridTileData
                     (
-                        materialBoard.GetRandomMaterial(),
+                        materialBoard.GetRandomGridMaterial(),
                         null, // No GameObject
                         null, // No Renderer
                         FactionEnum.None,
@@ -146,6 +153,31 @@ namespace TileSystem
             }
 
             return temporaryBatchedMatrices;
+        }
+
+        private Dictionary<Material, List<Matrix4x4[]>> SplitIntoChunks(Dictionary<Material, List<Matrix4x4>> source)
+        {
+            Dictionary<Material, List<Matrix4x4[]>> chunked = new();
+
+            foreach (var kvp in source)
+            {
+                Material material = kvp.Key;
+                List<Matrix4x4> matrices = kvp.Value;
+                List<Matrix4x4[]> chunks = new();
+
+                int total = matrices.Count;
+                for (int i = 0; i < total; i += 1023)
+                {
+                    int count = Mathf.Min(1023, matrices.Count - i);
+                    Matrix4x4[] chunk = new Matrix4x4[count];
+                    matrices.CopyTo(i, chunk, 0, count);
+                    chunks.Add(chunk);
+                }
+
+                chunked[material] = chunks;
+            }
+
+            return chunked;
         }
 
         private TileData BuildGridTileData

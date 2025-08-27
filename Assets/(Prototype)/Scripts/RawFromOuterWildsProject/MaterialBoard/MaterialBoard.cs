@@ -9,6 +9,7 @@ public class MaterialBoard : MonoBehaviour
     [SerializeField] private Color _missingColor;
 
     private Dictionary<string, Material> _materialMap;
+    private List<Material> _gridMaterials;
     private Material _materialMissing;
 
     public Material MaterialMissing { get => _materialMissing; }
@@ -20,27 +21,27 @@ public class MaterialBoard : MonoBehaviour
 
     public void InitializeAll()
     {
-        //InitializeColorMapFromProfile();
         CreateMissingMaterial();
         ColorProfileToMaterialMap();
+        AddGridMaterials();
         DebugLogAllMaterials();
     }
 
     private void CreateMissingMaterial()
     {
         _materialMissing = new(_materialTemplates.Unlit)
-        { color = _missingColor };
+        { color = _missingColor, name = "Missing Color"};
     }
 
-    public Material GetRandomMaterial()
+    public Material GetRandomGridMaterial()
     {
-        if (_materialMap == null || _materialMap.Count == 0)
+        if (_gridMaterials == null || _gridMaterials.Count == 0)
             return null;
 
-        int index = Random.Range(0, _materialMap.Count);
+        int index = Random.Range(0, _gridMaterials.Count);
         int i = 0;
 
-        foreach (var mat in _materialMap.Values)
+        foreach (var mat in _gridMaterials)
         {
             if (i == index)
                 return mat;
@@ -60,13 +61,33 @@ public class MaterialBoard : MonoBehaviour
 
         foreach (var slot in colorSlots)
         {
-            Material newMaterial = new(_materialTemplates.Unlit)
-            { color = slot.Color };
-
             string colorName = slot.Name;
+
+            Material newMaterial = new(_materialTemplates.Unlit)
+            { color = slot.Color, name = colorName };
+
             _materialMap[colorName] = newMaterial;
         }
     }
+
+    private void AddGridMaterials()
+    {
+        if (_gridMaterials == null)
+            _gridMaterials = new();
+
+        foreach (var item in _materialMap)
+        {
+            string key = item.Key;
+            Material mat = item.Value;
+
+            if (!key.StartsWith("G"))
+                return;
+
+            if (!_gridMaterials.Contains(mat))
+                _gridMaterials.Add(mat);
+        }
+    }
+
     void DebugLogAllMaterials()
     {
         if (_materialMap == null || _materialMap.Count == 0)
@@ -80,34 +101,6 @@ public class MaterialBoard : MonoBehaviour
         }
     }
 
-    /*
-void InitializeColorMapFromProfile()
-{
-    materialMap = new Dictionary<MaterialSerieEnum, Dictionary<MaterialTypeEnum, Material>>();
-
-    foreach (var serie in _materialProfile.Series)
-    {
-        MaterialSerieEnum serieKey = serie.Serie;
-
-        if (!materialMap.ContainsKey(serieKey))
-        {
-            materialMap[serieKey] = new Dictionary<MaterialTypeEnum, Material>();
-        }
-
-        foreach (var template in serie.Templates)
-        {
-            MaterialTypeEnum typeKey = template.Type;
-            Material materialValue = template.Material;
-
-            if (!materialMap[serieKey].ContainsKey(typeKey))
-            {
-                materialMap[serieKey][typeKey] = materialValue;
-            }
-        }
-    }
-}
-
-    */
     public Material GetMaterial(string name)
     {
         if (_materialMap.TryGetValue(name, out var material))

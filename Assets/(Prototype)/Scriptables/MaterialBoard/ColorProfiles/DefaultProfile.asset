@@ -13,15 +13,17 @@ MonoBehaviour:
   m_Name: DefaultProfile
   m_EditorClassIdentifier: 
   _colorSlots:
-  - _name: BW15
+  - _name: G_BW15
     _color: {r: 0.15, g: 0.15, b: 0.15, a: 1}
-  - _name: BW20
+  - _name: G_BW20
     _color: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-  - _name: BW25
+  - _name: G_BW25
     _color: {r: 0.25, g: 0.25, b: 0.25, a: 1}
-  - _name: BW30
+  - _name: G_BW30
     _color: {r: 0.3, g: 0.3, b: 0.3, a: 1}
-  - _name: BW35
+  - _name: G_BW35
     _color: {r: 0.35, g: 0.35, b: 0.35, a: 1}
-  - _name: BW40
+  - _name: G_BW40
     _color: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+  - _name: Paint_Green
+    _color: {r: 0.27450985, g: 0.7647059, b: 0.34097603, a: 1}
